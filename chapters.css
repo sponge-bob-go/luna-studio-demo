@@ -127,3 +127,60 @@
   .reelGhost {filter:none;mix-blend-mode:normal;opacity:.13;transform:none}
   .reelPortrait {box-shadow:8px 10px 18px #160d1e38}
 }
+
+@font-face {
+  font-family:Cormorant;
+  src:url(assets/cormorant.woff2) format("woff2");
+  font-weight:300 700;
+  font-display:swap;
+}
+@font-face {
+  font-family:Cormorant;
+  src:url(assets/cormorant-italic.woff2) format("woff2");
+  font-weight:300 700;
+  font-style:italic;
+  font-display:swap;
+}
+h1,h2,h3,figcaption,.wordmark,.brand,.closingMark,.reelPage h2,.poster h1 {
+  font-family:Cormorant,Baskerville,Georgia,serif;
+  font-weight:500;
+  letter-spacing:-.035em;
+}
+.poster h1 em,.reelPage h2{font-weight:500}
+.prices{color:#f8eee2;background:#28171e}
+.pricesIntro{display:flex;align-items:end;justify-content:space-between;gap:20px;border-bottom:1px solid #89686d;padding-bottom:22px}
+.pricesIntro h2{font-size:clamp(52px,7.6vw,128px);line-height:.85;margin:0}
+.pricesIntro em{font-weight:500;color:#edbaad}
+.pricesIntro p,.pricesEnd p{color:#d6bdba;font-size:14px}
+.prices .priceLayout{grid-template-columns:minmax(0,.8fr) minmax(0,1.65fr);gap:clamp(24px,4vw,65px);margin:38px 0}
+.prices .pricePhoto{max-height:none;position:relative;min-height:330px}
+.prices .pricePhoto img{position:absolute;inset:0;object-position:50% 45%}
+.prices .rates article{min-width:0}
+.prices .rates h3{font-size:clamp(29px,3.6vw,57px);line-height:.95;color:inherit;margin:0 0 14px}
+.trialRate{display:grid;gap:4px;padding:14px 0;border-block:1px solid #89686d;color:#edbaad}
+.trialRate span{font-size:14px}
+.trialRate strong{font:500 clamp(42px,5vw,77px)/.9 Cormorant,Georgia,serif;letter-spacing:-.035em;white-space:nowrap}
+.trialRate small{font-size:.52em}
+.prices .rates dl{gap:0 10px;font-size:14px}
+.prices .rates dd{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.pricesEnd{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.pricesEnd a{padding:8px 0;border-bottom:1px solid #edbaad;white-space:nowrap;color:#edbaad}
+@media(max-width:700px){
+  .pricesIntro{display:block}
+  .pricesIntro p{margin-top:15px}
+  .prices .priceLayout{display:flex;flex-direction:column;margin:23px 0}
+  .prices .pricePhoto{height:190px;min-height:0}
+  .prices .pricePhoto img{object-position:50% 44%}
+  .prices .rates{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+  .prices .rates dl{font-size:12px;gap:0 5px}
+  .prices .rates dd,.prices .rates dt{padding:9px 0}
+  .pricesEnd{align-items:start;flex-direction:column;gap:6px}
+  .poster h1{letter-spacing:-.035em}
+}
+@media (min-width:701px) and (max-width:920px){
+  .prices .priceLayout{grid-template-columns:minmax(0,.6fr) minmax(0,2fr);gap:22px}
+}
+@media (max-width:360px){
+  .prices .rates{grid-template-columns:1fr;gap:28px}
+  .pricesIntro h2{font-size:46px}
+}
