@@ -1,10 +1,15 @@
-const film = document.querySelector('.film');
-const stage = document.querySelector('.stage');
-const cuts = [...document.querySelectorAll('[data-cut]')];
-const frames = [...document.querySelectorAll('.schedule figure, .hallFrame, .entrance')];
+const film = document.querySelector('.opening');
+const stage = document.querySelector('.cover');
+const title = stage.querySelector('.cover-title');
+function fitTitle() {
+  stage.style.setProperty('--title-width', (stage.clientWidth * .974) / title.offsetWidth);
+}
+document.fonts.ready.then(fitTitle);
+new ResizeObserver(fitTitle).observe(stage);
+const frames = [...document.querySelectorAll('[data-parallax]')];
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const clamp = value => Math.min(1, Math.max(0, value));
-let still = 0;
+
 let queued = false;
 
 const reel = document.querySelector('.reel');
@@ -35,19 +40,25 @@ reelButtons.forEach((button,i) => {
     else scrollTo({top:scrollY+reel.getBoundingClientRect().top+(reel.offsetHeight-reelScreen.offsetHeight)*i/2,behavior:'smooth'});
   };
 });
+
+const trial = document.querySelector('.tariff-intro');
+function drawTrial() {
+  const rect = trial.getBoundingClientRect();
+  if (rect.top >= innerHeight || rect.bottom <= 0) return;
+  const travel = (innerHeight - rect.top) / (innerHeight + rect.height);
+  trial.style.setProperty('--depth', reduced.matches ? 0 : travel * 2 - 1);
+}
 function paint() {
   drawReel();
+  drawTrial();
   queued = false;
   const bounds = film.getBoundingClientRect();
   const distance = Math.max(1, bounds.height - stage.offsetHeight);
-  const progress = reduced.matches ? still : clamp(-bounds.top / distance);
+  const progress = reduced.matches ? 0 : clamp(-bounds.top / distance);
   if (bounds.bottom > 0 && bounds.top < innerHeight) {
     stage.style.setProperty('--progress', progress);
-    stage.style.setProperty('--wipe', clamp((progress - .16) / .68));
-    cuts.forEach((button, index) => {
-      const active = String(index === Math.round(progress));
-      if (button.getAttribute('aria-pressed') !== active) button.setAttribute('aria-pressed', active);
-    });
+    const blend = clamp((progress - .16) / .68);
+    stage.style.setProperty('--blend', blend * blend * (3 - 2 * blend));
   }
   for (const frame of frames) {
     const rect = frame.getBoundingClientRect();
@@ -60,35 +71,10 @@ function paint() {
 function invalidate() {
   if (!queued) { queued = true; requestAnimationFrame(paint); }
 }
-cuts.forEach((button, index) => {
-  button.onclick = () => {
-    still = index;
-    if (reduced.matches) paint();
-    else scrollTo({top:scrollY + film.getBoundingClientRect().top + index * (film.offsetHeight - stage.offsetHeight),behavior:'smooth'});
-  };
-});
 addEventListener('scroll', invalidate, {passive:true});
 addEventListener('resize', invalidate);
 reduced.addEventListener('change', invalidate);
 paint();
-
-// Keep one moving selection surface per control, including wrapped filter rows.
-for (const group of document.querySelectorAll('.filters, .modes, .reelControls')) {
-  function alignSelection() {
-    const active = group.querySelector('[aria-pressed="true"]');
-    if (!active) return;
-    group.style.setProperty('--pill-x', active.offsetLeft + 'px');
-    group.style.setProperty('--pill-y', active.offsetTop + 'px');
-    group.style.setProperty('--pill-width', active.offsetWidth + 'px');
-    group.style.setProperty('--pill-height', active.offsetHeight + 'px');
-    group.classList.add('selectionTrack');
-  }
-  new ResizeObserver(alignSelection).observe(group);
-  new MutationObserver(changes => {
-    if (changes.some(change => change.oldValue !== change.target.getAttribute('aria-pressed'))) alignSelection();
-  }).observe(group,{subtree:true,attributes:true,attributeFilter:['aria-pressed'],attributeOldValue:true});
-  alignSelection();
-}
 
 const sculptureMount = document.querySelector('#sculpt');
 const loadSculpture = new IntersectionObserver(([entry]) => {

@@ -1,56 +1,77 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#440d23"><title>ЛУНА — студия растяжки и пилона в Туле</title><link rel="stylesheet" href="style.css"><script defer src="studio.js?v=2"></script><script defer src="motion.js?v=3"></script><link rel="stylesheet" href="chapters.css?v=4"></head><body>
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4ecde">
+  <title>ЛУНА — студия растяжки и пилона в Туле</title>
+  <link rel="preload" href="assets/cormorant.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="editorial.css?v=4">
+  <script defer src="studio.js?v=4"></script>
+  <script defer src="motion.js?v=7"></script>
+</head>
+<body>
 <main id="top">
-<div class="film">
-  <section class="stage" aria-label="Студия ЛУНА">
-    <div class="scene solo"></div><div class="scene duet"></div>
-    <header><a class="wordmark" href="#top" aria-label="Луна, на главную"><i></i> ЛУНА</a>
-      <nav><a href="#directions">Направления</a><a href="#classes">Расписание</a><a href="#prices">Цены</a><a href="#studio">Студия</a></nav>
-      <a class="topbook" href="#classes">Записаться <span class="ui-arrow ui-arrow--diagonal" aria-hidden="true"></span></a></header>
-    <div class="poster"><p class="place"><i></i> Тула / Заречье</p><h1>Студия<br><em>Луна</em></h1>
-      <p class="lead">Растяжка и танец на пилоне<br>в малых группах и персонально.</p>
-      <a class="trial" href="#classes">Выбрать пробное <b>400 ₽</b><span class="ui-arrow ui-arrow--diagonal" aria-hidden="true"></span></a>
+<div class="opening">
+  <section class="cover" aria-label="Студия Луна">
+    <header class="masthead">
+      <a href="#top">Луна / Студия движения</a>
+      <nav aria-label="Разделы сайта"><a href="#directions">Направления</a><a href="#classes">Расписание</a><a href="#prices">Цены</a><a href="#studio">Студия</a></nav>
+    </header>
+    <div class="cover-window" aria-hidden="true">
+      <div class="wide-shot"></div>
+      <div class="detail-shot"></div>
     </div>
-    <div class="strip"><a href="#classes" class="down"><span class="ui-arrow ui-arrow--down" aria-hidden="true"></span> <span>К расписанию</span></a>
-    <div class="cuts"><button data-cut="0" aria-label="Первый кадр, соло"><i></i>Соло</button><button data-cut="1" aria-label="Второй кадр, дуэт"><i></i>Дуэт</button></div></div>
+    <h1 class="cover-title">ЛУНА</h1>
+    <div class="title-mask" aria-hidden="true"><span class="cover-title">ЛУНА</span></div>
+    <div class="cover-foot">
+      <p>Студия растяжки и танца на пилоне<br>Тула, Заречье</p>
+      <a class="book-link" href="#classes">Записаться на пробное <span class="ui-arrow" aria-hidden="true"></span></a>
+    </div>
   </section>
 </div>
+
 <section id="directions" class="reel" aria-label="Направления студии"><div class="reelScreen"><div class="reelPages"><article class="reelPage dance" >
  <div class="reelGhost" aria-hidden="true" style="background-image:url(assets/solo.jpg)"></div>
  <div class="reelPortrait"><img src="assets/solo.jpg" alt="Танцовщица у пилона в контровом свете"></div>
- <div class="reelCredit">Направления студии <span>01 / 03</span></div>
+ <div class="reelCredit">В движении <span>01 / 03</span></div>
  <h2>Танец</h2><div class="reelAction"><p>Повороты, переходы и связки под музыку.</p><a href="#classes" data-course="Танцы на пилоне">Выбрать занятие <span class="ui-arrow ui-arrow--diagonal" aria-hidden="true"></span></a></div></article><article class="reelPage stretch" inert>
  <div class="reelGhost" aria-hidden="true" style="background-image:url(assets/red-stretch.jpg)"></div>
  <div class="reelPortrait"><img src="assets/red-stretch.jpg" alt="Упражнение на растяжку в студии"></div>
- <div class="reelCredit">Направления студии <span>02 / 03</span></div>
+ <div class="reelCredit">В движении <span>02 / 03</span></div>
  <h2>Растяжка</h2><div class="reelAction"><p>Работа с гибкостью и подвижностью на коврике.</p><a href="#classes" data-course="Растяжка">Выбрать занятие <span class="ui-arrow ui-arrow--diagonal" aria-hidden="true"></span></a></div></article><article class="reelPage power" inert>
  <div class="reelGhost" aria-hidden="true" style="background-image:url(assets/inversion.jpg)"></div>
  <div class="reelPortrait"><img src="assets/inversion.jpg" alt="Баланс на пилоне в зале студии"></div>
- <div class="reelCredit">Направления студии <span>03 / 03</span></div>
+ <div class="reelCredit">В движении <span>03 / 03</span></div>
  <h2>Сила</h2><div class="reelAction"><p>Опоры, удержания и баланс на пилоне.</p><a href="#classes" data-course="Силовой пилон">Выбрать занятие <span class="ui-arrow ui-arrow--diagonal" aria-hidden="true"></span></a></div></article></div><div class="reelControls" aria-label="Выберите направление"><button data-reel="0" aria-pressed="true"><img src="assets/solo.jpg" alt=""><span>Танец</span></button><button data-reel="1" aria-pressed="false"><img src="assets/red-stretch.jpg" alt=""><span>Растяжка</span></button><button data-reel="2" aria-pressed="false"><img src="assets/inversion.jpg" alt=""><span>Сила</span></button></div></div></section>
-<section class="orbitLab" aria-label="Траектории движения">
-  <div class="orbitCopy"><h2>Вокруг<br><em>оси</em></h2><p>Выберите движение и поверните его траекторию.</p><div class="modes"><button data-mode="0" aria-pressed="true">Вращение</button><button data-mode="1" aria-pressed="false">Вытяжение</button></div><div id="orbitTimes" aria-label="Занятия выбранного направления"></div><a id="orbitCourse" data-course="Танцы на пилоне" href="#classes">Всё расписание <span class="ui-arrow ui-arrow--diagonal" aria-hidden="true"></span></a></div>
-  <div id="sculpt" tabindex="0" aria-label="Трёхмерная лента. Поверните пальцем или стрелками клавиатуры."></div>
-</section>
-<section id="classes" class="section"><div class="season"><h2>Афиша <em>занятий</em></h2><p>Расписание на неделю<br>Пробное в группе · 400 ₽</p></div><div id="filters" class="filters"></div><div class="schedule"><figure><img loading="lazy" id="classPhoto" src="assets/duet.jpg" alt=""><figcaption id="caption"></figcaption></figure><div class="playbill"><div class="billHead"><span>День недели</span><span>Начало</span></div><div id="slots" aria-live="polite"></div></div></div></section>
-<section id="prices" class="section prices" aria-labelledby="prices-title">
-  <h2 id="prices-title">Стоимость занятий</h2>
-  <div class="firstVisit">
-    <article class="groupVisit">
-      <img src="assets/duet.jpg" alt="" loading="lazy">
-      <div class="visitOffer">
-        <h3>Первый раз в группе</h3>
-        <p class="offerPrice">400 <small>₽</small></p>
-        <a href="#classes">Выбрать время <span class="ui-arrow ui-arrow--diagonal" aria-hidden="true"></span></a>
-      </div>
-    </article>
-    <article class="privateVisit">
-      <div class="visitOffer">
-        <h3>Первый раз персонально</h3>
-        <p class="offerPrice">1 000 <small>₽</small></p>
-      </div>
-    </article>
+<section class="orbit" aria-labelledby="orbit-title">
+  <div class="orbit-scene"><h2 id="orbit-title">Вокруг <em>оси</em></h2>
+    <div id="sculpt" tabindex="0" aria-label="Трёхмерная лента. Поверните пальцем или стрелками клавиатуры."></div>
   </div>
-  <table class="priceComparison">
+  <div class="orbitCopy"><p>Выберите движение и поверните его траекторию.</p>
+    <div class="modes"><button data-mode="0" aria-pressed="true">Вращение</button><button data-mode="1" aria-pressed="false">Вытяжение</button></div>
+    <div id="orbitTimes" aria-label="Время пробных занятий"></div>
+    <a class="text-link" id="orbitCourse" data-course="Танцы на пилоне" href="#classes">Всё расписание ↗</a>
+  </div>
+</section>
+<section id="classes" class="programme" aria-labelledby="programme-title">
+  <header class="programme-head"><h2 id="programme-title">Расписание</h2><p>Пробное в группе<br><strong>400 ₽</strong></p></header>
+  <div class="programme-spread">
+    <figure class="session-photo" data-parallax><img loading="lazy" id="classPhoto" src="assets/duet.jpg" alt=""><div class="poster-time" aria-hidden="true"><span id="poster-day"></span><strong id="poster-hour"></strong></div><figcaption id="caption"></figcaption></figure>
+    <div class="programme-list"><h3>Выберите направление</h3><div id="filters" class="filters"></div>
+      <div class="billHead"><span>День недели</span><span>Начало</span></div>
+      <div id="slots" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+<section id="prices" class="tariffs" aria-labelledby="prices-title">
+  <div class="tariff-intro">
+    <figure><img src="assets/first-visit.jpg" width="1536" height="1024" loading="lazy" alt="Упражнение с гимнастическим мячом"></figure>
+    <h2 id="prices-title">Первое<br><em>занятие</em></h2>
+    <div class="trial-rates"><div><h3>В группе</h3><p>400 <small>₽</small></p><a class="text-link" href="#classes">Выбрать время ↗</a></div>
+    <div><h3>Персонально</h3><p>1 000 <small>₽</small></p></div></div>
+  </div>
+  <div class="rate-sheet"><h3>Абонементы</h3><div><table class="priceComparison">
     <caption>Разовые занятия и абонементы</caption>
     <thead><tr><th scope="col">Посещения</th><th scope="col">В группе</th><th scope="col">Персонально</th></tr></thead>
     <tbody>
@@ -61,8 +82,21 @@
       <tr><th scope="row">12 занятий</th><td>7 200 ₽</td><td><span aria-label="Нет тарифа">—</span></td></tr>
     </tbody>
   </table>
-  <p class="priceNote">Абонемент действует один календарный месяц с первого занятия.</p>
+    <p class="priceNote">Абонемент действует один календарный месяц с первого занятия.</p></div></div>
 </section>
-<section class="section studio" id="studio"><div class="visitPhotos"><div class="hallFrame"><img src="assets/hall.jpg" alt="Зал студии с пилонами и световой стеной" loading="lazy"></div><figure class="entrance"><img loading="lazy" src="assets/entrance.jpg" alt="Фасад здания на Луначарского, 1"><figcaption>Вид с улицы</figcaption></figure></div><div><h2>До встречи<br>в «ЛУНЕ»</h2><p>Тула, Заречье<br>ул. Луначарского, 1<br>3 этаж, офис 308</p><a href="https://yandex.ru/maps/?text=Тула%2C%20улица%20Луначарского%2C%201" target="_blank" rel="noopener">Открыть на карте <span class="ui-arrow ui-arrow--diagonal" aria-hidden="true"></span></a></div></section></main>
-<footer class="closing"><div class="closingNav"><span>Студия растяжки и пилона</span><a href="#top">Наверх <span class="ui-arrow ui-arrow--up" aria-hidden="true"></span></a></div><div class="closingMark" aria-hidden="true">ЛУНА</div><div class="closingNav"><a href="#classes">Выбрать пробное <span class="ui-arrow ui-arrow--diagonal" aria-hidden="true"></span></a><button id="admin">Заявки · демо</button></div></footer>
-<dialog id="dialog"><button id="close" aria-label="Закрыть">×</button><div id="panel"></div></dialog></body></html>
+<section class="location" id="studio" aria-labelledby="location-title">
+  <div class="location-scene"><figure data-parallax><img src="assets/hall.jpg" loading="lazy" alt="Зал студии с пилонами и световой стеной"></figure>
+    <h2 id="location-title">В студии</h2></div>
+  <div class="location-details"><figure class="door"><img src="assets/entrance.jpg" loading="lazy" alt="Вход в здание"><figcaption>Вид с улицы</figcaption></figure>
+    <div><p>Тула, Заречье</p><h3>Луначарского, 1</h3><p>3 этаж, офис 308</p>
+      <a class="text-link" href="https://yandex.ru/maps/?text=Тула%2C%20улица%20Луначарского%2C%201" target="_blank" rel="noopener">Открыть на карте ↗</a></div>
+  </div>
+</section>
+</main>
+<footer class="closing">
+  <div class="closing-top"><p>Студия растяжки и танца на пилоне</p><a href="#top">Наверх ↑</a></div>
+  <div class="final-frame" data-parallax><div class="final-photo"></div><div class="closingMark" aria-hidden="true">ЛУНА</div></div>
+  <div class="closing-bottom"><a class="book-link" href="#classes">Записаться на пробное ↗</a><a href="https://vk.ru/luna_pole" rel="noopener" target="_blank">Студия в VK ↗</a><button id="admin">Заявки · демо</button></div>
+</footer>
+<dialog id="dialog" aria-labelledby="panel-heading"><button id="close" aria-label="Закрыть">×</button><div id="panel"></div></dialog>
+</body></html>

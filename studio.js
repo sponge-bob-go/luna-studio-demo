@@ -20,6 +20,7 @@ function revealContent(node, delay = 0) {
 function show(html) {
   const previousHeight = modal.open ? panel.offsetHeight : 0;
   panel.innerHTML = html;
+  panel.querySelector('h3').id = 'panel-heading';
   if (!modal.open) modal.showModal();
   else if (!calm.matches) {
     panel.getAnimations().forEach(animation => animation.cancel());
@@ -50,6 +51,19 @@ function book(course, time) {
     } catch { form.querySelector('[role=status]').textContent="Разрешите локальное хранение данных в браузере и попробуйте снова."; }
   };
 }
+function previewTime(day, hour, animate) {
+  const dayLabel = el("poster-day");
+  const clock = el("poster-hour");
+  const nextTime = hour + ":00";
+  if (dayLabel.textContent === days[day] && clock.textContent === nextTime) return;
+  dayLabel.textContent = days[day];
+  clock.textContent = nextTime;
+  if (animate && !calm.matches) {
+    clock.getAnimations().forEach(animation => animation.cancel());
+    clock.animate([{clipPath:"inset(0 0 90% 0)",translate:"0 .12em"},{clipPath:"inset(0)",translate:"0 0"}],
+      {duration:360,easing:easeOut});
+  }
+}
 let selectedCourse = '';
 function select(course) {
   if (selectedCourse === course) return;
@@ -71,16 +85,18 @@ function select(course) {
     photo.src = source;
     if (animateChange) photo.decode().catch(() => {}).then(() => {
       if (!previous.isConnected) return;
-      const fade = previous.animate([{opacity:1},{opacity:0}], {duration:380,easing:easeOut,fill:'forwards'});
+      const fade = previous.animate([{clipPath:"inset(0)"},{clipPath:"inset(0 100% 0 0)"}], {duration:480,easing:easeOut,fill:'forwards'});
       fade.onfinish = () => previous.remove();
     });
   }
   if (animateChange) revealContent(el("caption"));
+  previewTime(...classes[course][0], animateChange);
   el("slots").replaceChildren();
   for(const [day,hour] of classes[course]){
     const time=days[day]+", "+hour+":00";
     const b=document.createElement("button");b.className="slot";
     b.innerHTML='<span>'+days[day]+'</span><strong>'+hour+':00</strong><small>Выбрать <span class="ui-arrow ui-arrow--diagonal" aria-hidden="true"></span></small>';
+    b.onpointerenter = b.onfocus = () => previewTime(day, hour, true);
     b.onclick=()=>book(course,time);el("slots").append(b);
     if (animateChange) revealContent(b, (el("slots").childElementCount - 1) * 24);
   }
