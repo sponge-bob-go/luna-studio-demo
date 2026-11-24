@@ -3,6 +3,7 @@ import * as THREE from './assets/three.module.min.js';
 const mount = document.querySelector('#sculpt');
 const buttons = [...document.querySelectorAll('[data-mode]')];
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+const touchScreen = matchMedia('(pointer: coarse)').matches;
 let mode = 0;
 let refresh = () => {};
 buttons.forEach((button, index) => button.addEventListener('click', () => {
@@ -38,7 +39,7 @@ function ribbon(stretched) {
 function build(renderer) {
   mount.append(renderer.domElement);
   mount.classList.add('ready');
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.75));
+  renderer.setPixelRatio(Math.min(devicePixelRatio, touchScreen ? 1 : 1.75));
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(36,1,.1,50);
   camera.position.set(0,.25,7.8); camera.lookAt(0,0,0);
@@ -87,5 +88,5 @@ function build(renderer) {
   mount.onlostpointercapture=()=>{startX=null;};
   mount.onkeydown=e=>{if(['ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();angle+=e.key==='ArrowLeft'?-.25:.25;requestDraw();}};
 }
-try { build(new THREE.WebGLRenderer({alpha:true,antialias:true,powerPreference:'low-power'})); }
+try { build(new THREE.WebGLRenderer({alpha:true,antialias:!touchScreen,powerPreference:'low-power'})); }
 catch { mount.removeAttribute('tabindex');document.querySelector('.orbitCopy p').textContent='Выберите движение и посмотрите занятия в расписании.'; }

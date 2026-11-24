@@ -21,8 +21,11 @@ function drawReel() {
     const reveal = i === 0 ? 1 : clamp((position - i + .72) / .44);
     page.style.setProperty('--open', reveal);
     page.style.setProperty('--pan', reduced.matches ? 0 : Math.max(-1,Math.min(1,position-i)));
-    page.inert = i !== Math.round(position);
-    reelButtons[i].setAttribute('aria-pressed', String(!page.inert));
+    const inactive = i !== Math.round(position);
+    if (page.inert !== inactive) {
+      page.inert = inactive;
+      reelButtons[i].setAttribute('aria-pressed', String(!inactive));
+    }
   });
 }
 reelButtons.forEach((button,i) => {
@@ -38,9 +41,14 @@ function paint() {
   const bounds = film.getBoundingClientRect();
   const distance = Math.max(1, bounds.height - stage.offsetHeight);
   const progress = reduced.matches ? still : clamp(-bounds.top / distance);
-  stage.style.setProperty('--progress', progress);
-  stage.style.setProperty('--wipe', clamp((progress - .16) / .68));
-  cuts.forEach((button, index) => button.setAttribute('aria-pressed', String(index === Math.round(progress))));
+  if (bounds.bottom > 0 && bounds.top < innerHeight) {
+    stage.style.setProperty('--progress', progress);
+    stage.style.setProperty('--wipe', clamp((progress - .16) / .68));
+    cuts.forEach((button, index) => {
+      const active = String(index === Math.round(progress));
+      if (button.getAttribute('aria-pressed') !== active) button.setAttribute('aria-pressed', active);
+    });
+  }
   for (const frame of frames) {
     const rect = frame.getBoundingClientRect();
     if (rect.bottom > 0 && rect.top < innerHeight) {
@@ -81,3 +89,13 @@ for (const group of document.querySelectorAll('.filters, .modes, .reelControls')
   }).observe(group,{subtree:true,attributes:true,attributeFilter:['aria-pressed'],attributeOldValue:true});
   alignSelection();
 }
+
+const sculptureMount = document.querySelector('#sculpt');
+const loadSculpture = new IntersectionObserver(([entry]) => {
+  if (!entry.isIntersecting) return;
+  loadSculpture.disconnect();
+  import('./sculpture.js?v=2').catch(() => {
+    sculptureMount.removeAttribute('tabindex');
+  });
+}, {rootMargin:'320px'});
+loadSculpture.observe(sculptureMount);

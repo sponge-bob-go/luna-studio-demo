@@ -89,3 +89,41 @@
   dialog[open]::backdrop{background:#210818a8}
   @starting-style{dialog[open]{opacity:0;transform:translateY(15px) scale(.975)}dialog[open]::backdrop{background:transparent}}
 }
+
+.ui-arrow {
+  display:inline-block;
+  position:relative;
+  flex:none;
+  width:.85em;
+  height:.85em;
+  margin-inline-start:.16em;
+  vertical-align:-.02em;
+  rotate:var(--arrow-angle,45deg);
+}
+.ui-arrow::before,.ui-arrow::after {
+  content:"";
+  position:absolute;
+  left:50%;
+}
+.ui-arrow::before {
+  top:12%;
+  bottom:8%;
+  border-left:1.4px solid currentColor;
+  translate:-50% 0;
+}
+.ui-arrow::after {
+  top:14%;
+  width:44%;
+  height:44%;
+  border-top:1.4px solid currentColor;
+  border-left:1.4px solid currentColor;
+  transform:translateX(-50%) rotate(45deg);
+}
+.ui-arrow--up {--arrow-angle:0deg}
+.ui-arrow--down {--arrow-angle:180deg}
+.down .ui-arrow {font-size:20px;margin:0}
+
+@media (max-width:700px),(pointer:coarse) {
+  .reelGhost {filter:none;mix-blend-mode:normal;opacity:.13;transform:none}
+  .reelPortrait {box-shadow:8px 10px 18px #160d1e38}
+}

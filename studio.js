@@ -80,7 +80,7 @@ function select(course) {
   for(const [day,hour] of classes[course]){
     const time=days[day]+", "+hour+":00";
     const b=document.createElement("button");b.className="slot";
-    b.innerHTML='<span>'+days[day]+'</span><strong>'+hour+':00</strong><small>Выбрать ↗</small>';
+    b.innerHTML='<span>'+days[day]+'</span><strong>'+hour+':00</strong><small>Выбрать <span class="ui-arrow ui-arrow--diagonal" aria-hidden="true"></span></small>';
     b.onclick=()=>book(course,time);el("slots").append(b);
     if (animateChange) revealContent(b, (el("slots").childElementCount - 1) * 24);
   }
