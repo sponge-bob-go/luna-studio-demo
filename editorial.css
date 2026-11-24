@@ -13,7 +13,34 @@ a:focus-visible,button:focus-visible,input:focus-visible,#sculpt:focus-visible {
 img {display:block;width:100%}
 .masthead nav {display:flex}
 .masthead a:hover,.closing a:not(.book-link):hover {text-decoration:underline;text-underline-offset:4px}
-.ui-arrow::after {content:"↗"}
+.ui-arrow {
+  position:relative;
+  display:inline-block;
+  flex:none;
+  width:.8em;
+  height:.8em;
+  vertical-align:-.03em;
+  transform:rotate(45deg);
+}
+.ui-arrow--up {transform:none}
+.ui-arrow::before,.ui-arrow::after {
+  content:"";
+  position:absolute;
+  left:50%;
+}
+.ui-arrow::before {
+  inset-block:9%;
+  border-left:1.5px solid currentColor;
+  transform:translateX(-50%);
+}
+.ui-arrow::after {
+  top:14%;
+  width:45%;
+  height:45%;
+  border-top:1.5px solid currentColor;
+  border-left:1.5px solid currentColor;
+  transform:translateX(-50%) rotate(45deg);
+}
 .text-link {display:inline-block;padding-bottom:3px;border-bottom:1px solid currentColor}
 [data-parallax] {--drift:0px;overflow:hidden}
 [data-parallax]>img {width:100%;height:100%;object-fit:cover;transform:scale(1.12) translateY(var(--drift))}
