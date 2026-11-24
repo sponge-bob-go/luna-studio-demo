@@ -1,4 +1,4 @@
-<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#440d23"><title>ЛУНА — студия растяжки и пилона в Туле</title><link rel="stylesheet" href="style.css"><script defer src="studio.js?v=2"></script><script defer src="motion.js?v=2"></script><link rel="stylesheet" href="chapters.css?v=3"></head><body>
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#440d23"><title>ЛУНА — студия растяжки и пилона в Туле</title><link rel="stylesheet" href="style.css"><script defer src="studio.js?v=2"></script><script defer src="motion.js?v=3"></script><link rel="stylesheet" href="chapters.css?v=4"></head><body>
 <main id="top">
 <div class="film">
   <section class="stage" aria-label="Студия ЛУНА">
@@ -32,10 +32,36 @@
   <div id="sculpt" tabindex="0" aria-label="Трёхмерная лента. Поверните пальцем или стрелками клавиатуры."></div>
 </section>
 <section id="classes" class="section"><div class="season"><h2>Афиша <em>занятий</em></h2><p>Расписание на неделю<br>Пробное в группе · 400 ₽</p></div><div id="filters" class="filters"></div><div class="schedule"><figure><img loading="lazy" id="classPhoto" src="assets/duet.jpg" alt=""><figcaption id="caption"></figcaption></figure><div class="playbill"><div class="billHead"><span>День недели</span><span>Начало</span></div><div id="slots" aria-live="polite"></div></div></div></section>
-<section id="prices" class="section prices">
-  <div class="pricesIntro"><h2>Стоимость <em>занятий</em></h2><p>Первое занятие, разовые визиты и абонементы.</p></div>
-  <div class="priceLayout"><div class="pricePhoto"><img loading="lazy" src="assets/stretch.jpg" alt="Упражнение на растяжку"></div><div class="rates"><article><h3>В группе</h3><div class="trialRate"><span>Первое занятие</span><strong>400 <small>₽</small></strong></div><dl><dt>Разовое посещение</dt><dd>800 ₽</dd><dt>4 занятия</dt><dd>2 800 ₽</dd><dt>8 занятий</dt><dd>5 200 ₽</dd><dt>12 занятий</dt><dd>7 200 ₽</dd></dl></article><article><h3>Персонально</h3><div class="trialRate"><span>Первое занятие</span><strong>1 000 <small>₽</small></strong></div><dl><dt>Разовое посещение</dt><dd>2 000 ₽</dd><dt>4 занятия</dt><dd>7 200 ₽</dd><dt>5 занятий</dt><dd>8 500 ₽</dd><dt>8 занятий</dt><dd>13 200 ₽</dd></dl></article></div></div>
-  <div class="pricesEnd"><p>Абонемент действует один календарный месяц с первого занятия.</p><a href="#classes">Выбрать время <span class="ui-arrow ui-arrow--diagonal" aria-hidden="true"></span></a></div>
+<section id="prices" class="section prices" aria-labelledby="prices-title">
+  <h2 id="prices-title">Стоимость занятий</h2>
+  <div class="firstVisit">
+    <article class="groupVisit">
+      <img src="assets/duet.jpg" alt="" loading="lazy">
+      <div class="visitOffer">
+        <h3>Первый раз в группе</h3>
+        <p class="offerPrice">400 <small>₽</small></p>
+        <a href="#classes">Выбрать время <span class="ui-arrow ui-arrow--diagonal" aria-hidden="true"></span></a>
+      </div>
+    </article>
+    <article class="privateVisit">
+      <div class="visitOffer">
+        <h3>Первый раз персонально</h3>
+        <p class="offerPrice">1 000 <small>₽</small></p>
+      </div>
+    </article>
+  </div>
+  <table class="priceComparison">
+    <caption>Разовые занятия и абонементы</caption>
+    <thead><tr><th scope="col">Посещения</th><th scope="col">В группе</th><th scope="col">Персонально</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Разовое</th><td>800 ₽</td><td>2 000 ₽</td></tr>
+      <tr><th scope="row">4 занятия</th><td>2 800 ₽</td><td>7 200 ₽</td></tr>
+      <tr><th scope="row">5 занятий</th><td><span aria-label="Нет тарифа">—</span></td><td>8 500 ₽</td></tr>
+      <tr><th scope="row">8 занятий</th><td>5 200 ₽</td><td>13 200 ₽</td></tr>
+      <tr><th scope="row">12 занятий</th><td>7 200 ₽</td><td><span aria-label="Нет тарифа">—</span></td></tr>
+    </tbody>
+  </table>
+  <p class="priceNote">Абонемент действует один календарный месяц с первого занятия.</p>
 </section>
 <section class="section studio" id="studio"><div class="visitPhotos"><div class="hallFrame"><img src="assets/hall.jpg" alt="Зал студии с пилонами и световой стеной" loading="lazy"></div><figure class="entrance"><img loading="lazy" src="assets/entrance.jpg" alt="Фасад здания на Луначарского, 1"><figcaption>Вид с улицы</figcaption></figure></div><div><h2>До встречи<br>в «ЛУНЕ»</h2><p>Тула, Заречье<br>ул. Луначарского, 1<br>3 этаж, офис 308</p><a href="https://yandex.ru/maps/?text=Тула%2C%20улица%20Луначарского%2C%201" target="_blank" rel="noopener">Открыть на карте <span class="ui-arrow ui-arrow--diagonal" aria-hidden="true"></span></a></div></section></main>
 <footer class="closing"><div class="closingNav"><span>Студия растяжки и пилона</span><a href="#top">Наверх <span class="ui-arrow ui-arrow--up" aria-hidden="true"></span></a></div><div class="closingMark" aria-hidden="true">ЛУНА</div><div class="closingNav"><a href="#classes">Выбрать пробное <span class="ui-arrow ui-arrow--diagonal" aria-hidden="true"></span></a><button id="admin">Заявки · демо</button></div></footer>

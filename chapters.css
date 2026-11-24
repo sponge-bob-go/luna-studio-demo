@@ -147,40 +147,110 @@ h1,h2,h3,figcaption,.wordmark,.brand,.closingMark,.reelPage h2,.poster h1 {
   letter-spacing:-.035em;
 }
 .poster h1 em,.reelPage h2{font-weight:500}
-.prices{color:#f8eee2;background:#28171e}
-.pricesIntro{display:flex;align-items:end;justify-content:space-between;gap:20px;border-bottom:1px solid #89686d;padding-bottom:22px}
-.pricesIntro h2{font-size:clamp(52px,7.6vw,128px);line-height:.85;margin:0}
-.pricesIntro em{font-weight:500;color:#edbaad}
-.pricesIntro p,.pricesEnd p{color:#d6bdba;font-size:14px}
-.prices .priceLayout{grid-template-columns:minmax(0,.8fr) minmax(0,1.65fr);gap:clamp(24px,4vw,65px);margin:38px 0}
-.prices .pricePhoto{max-height:none;position:relative;min-height:330px}
-.prices .pricePhoto img{position:absolute;inset:0;object-position:50% 45%}
-.prices .rates article{min-width:0}
-.prices .rates h3{font-size:clamp(29px,3.6vw,57px);line-height:.95;color:inherit;margin:0 0 14px}
-.trialRate{display:grid;gap:4px;padding:14px 0;border-block:1px solid #89686d;color:#edbaad}
-.trialRate span{font-size:14px}
-.trialRate strong{font:500 clamp(42px,5vw,77px)/.9 Cormorant,Georgia,serif;letter-spacing:-.035em;white-space:nowrap}
-.trialRate small{font-size:.52em}
-.prices .rates dl{gap:0 10px;font-size:14px}
-.prices .rates dd{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
-.pricesEnd{display:flex;align-items:center;justify-content:space-between;gap:18px}
-.pricesEnd a{padding:8px 0;border-bottom:1px solid #edbaad;white-space:nowrap;color:#edbaad}
-@media(max-width:700px){
-  .pricesIntro{display:block}
-  .pricesIntro p{margin-top:15px}
-  .prices .priceLayout{display:flex;flex-direction:column;margin:23px 0}
-  .prices .pricePhoto{height:190px;min-height:0}
-  .prices .pricePhoto img{object-position:50% 44%}
-  .prices .rates{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
-  .prices .rates dl{font-size:12px;gap:0 5px}
-  .prices .rates dd,.prices .rates dt{padding:9px 0}
-  .pricesEnd{align-items:start;flex-direction:column;gap:6px}
-  .poster h1{letter-spacing:-.035em}
+
+/* The photo and the lit crescent give the two first-visit offers distinct weights. */
+#prices {
+  --garnet:#411928;
+  --night:#21151c;
+  --paper:#f3e4dc;
+  --blush:#dfb2ab;
+  --quiet:#d9c3be;
+  background:var(--night);
+  color:var(--paper);
 }
-@media (min-width:701px) and (max-width:920px){
-  .prices .priceLayout{grid-template-columns:minmax(0,.6fr) minmax(0,2fr);gap:22px}
+#prices h2 {
+  font-size:clamp(47px,7.4vw,116px);
+  letter-spacing:-.048em;
+  line-height:.92;
+  margin-bottom:clamp(22px,4vw,52px);
 }
-@media (max-width:360px){
-  .prices .rates{grid-template-columns:1fr;gap:28px}
-  .pricesIntro h2{font-size:46px}
+.firstVisit {
+  display:grid;
+  grid-template-columns:1.65fr 1fr;
+  gap:5px;
+}
+.firstVisit article {
+  min-height:clamp(270px,32vw,435px);
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  display:flex;
+  align-items:end;
+}
+.groupVisit {background:var(--garnet)}
+.groupVisit img,.groupVisit::after {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:-2;
+}
+.groupVisit img {object-fit:cover;object-position:50% 49%}
+.groupVisit::after {
+  content:"";
+  z-index:-1;
+  background:linear-gradient(15deg,#190910 3%,#240e17dd 22%,#240e1700 73%);
+}
+.privateVisit {background:var(--paper);color:var(--garnet)}
+.privateVisit::after {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  width:min(73%,350px);
+  aspect-ratio:1;
+  right:-9%;
+  top:-28%;
+  border-radius:50%;
+  border:1px solid #c99492;
+  box-shadow:inset -22px -24px var(--blush);
+  transform:rotate(-25deg);
+}
+.visitOffer {padding:clamp(22px,3vw,48px);width:100%}
+.visitOffer h3 {font-size:clamp(25px,3vw,46px);line-height:.98}
+.offerPrice {
+  font:500 clamp(64px,9vw,136px)/.83 Cormorant,Georgia,serif;
+  letter-spacing:-.055em;
+  margin-top:13px;
+  white-space:nowrap;
+}
+.offerPrice small {font-size:.43em;letter-spacing:0}
+.visitOffer a {
+  display:inline-flex;
+  gap:16px;
+  align-items:center;
+  padding:9px 14px;
+  border:1px solid #f3e4dc8a;
+  border-radius:40px;
+  margin-top:22px;
+  font-size:14px;
+}
+.visitOffer a:hover {background:var(--paper);color:var(--garnet)}
+.priceComparison {
+  width:100%;
+  margin-top:clamp(36px,6vw,80px);
+  border-collapse:collapse;
+  font-size:clamp(13px,1.25vw,18px);
+}
+.priceComparison caption {
+  text-align:left;
+  font:500 clamp(28px,4vw,52px)/1 Cormorant,Georgia,serif;
+  padding-bottom:17px;
+}
+.priceComparison th,.priceComparison td {
+  border-bottom:1px solid #f3e4dc36;
+  padding:13px 0;
+  text-align:right;
+  white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+.priceComparison th {font-weight:400}
+.priceComparison th:first-child {text-align:left;width:42%}
+.priceComparison thead {color:var(--blush)}
+#prices .priceNote {color:var(--quiet);font-size:13px;margin-top:15px}
+@media(max-width:600px){
+  .firstVisit {grid-template-columns:1fr}
+  .firstVisit .groupVisit {min-height:305px}
+  .firstVisit .privateVisit {min-height:175px}
+  .privateVisit::after {width:60%;top:-66%}
+  .priceComparison th:first-child {width:35%}
 }

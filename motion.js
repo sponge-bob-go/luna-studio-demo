@@ -1,7 +1,7 @@
 const film = document.querySelector('.film');
 const stage = document.querySelector('.stage');
 const cuts = [...document.querySelectorAll('[data-cut]')];
-const frames = [...document.querySelectorAll('.schedule figure, .hallFrame, .pricePhoto, .entrance')];
+const frames = [...document.querySelectorAll('.schedule figure, .hallFrame, .entrance')];
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 const clamp = value => Math.min(1, Math.max(0, value));
 let still = 0;
